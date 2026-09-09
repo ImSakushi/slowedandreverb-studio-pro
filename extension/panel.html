@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Drift Audio</title><link rel="stylesheet" href="panel.css"></head>
+<body>
+<header><div class="wordmark"><img src="art/mark.svg" alt="" width="38" height="38"><div><h1>Drift Audio</h1><p>Find your listening pace.</p></div></div><span class="edition">02</span></header>
+<main>
+  <section class="transport" aria-label="Audio processing">
+    <div><span class="eyebrow">LISTENING SESSION</span><p id="session-state">Ready when you are</p></div>
+    <button id="toggle" class="primary" disabled>Start on this tab</button>
+  </section>
+  <p id="notice" role="status" aria-live="polite">Loading your settings…</p>
+  <fieldset id="controls" disabled>
+    <legend class="sr-only">Audio settings</legend>
+    <section class="speed-section">
+      <div class="control-title"><label for="speed">Playback speed</label><div class="number-unit"><input id="speed-number" aria-label="Exact playback speed" type="number" min="0.25" max="2" step="0.01"><span>×</span></div></div>
+      <input id="speed" type="range" min="0.25" max="2" step="0.01">
+      <div class="scale"><span>0.25×</span><span>1×</span><span>2×</span></div>
+      <label class="check"><input id="preservePitch" type="checkbox"><span>Keep the original pitch when changing speed</span></label>
+    </section>
+    <section class="grid">
+      <div class="control"><div class="control-title"><label for="pitch">Pitch shift</label><output id="pitch-output" for="pitch"></output></div><input id="pitch" type="range" min="-12" max="12" step="0.1"><input id="pitch-number" aria-label="Exact pitch shift in semitones" type="number" min="-12" max="12" step="0.1"><small>semitones, without changing speed</small></div>
+      <div class="control"><div class="control-title"><label for="reverb">Reverb</label><output id="reverb-output" for="reverb"></output></div><input id="reverb" type="range" min="0" max="1" step="0.01"><div class="scale"><span>Dry</span><span>Spacious</span></div></div>
+      <div class="control"><div class="control-title"><label for="decay">Room tail</label><output id="decay-output" for="decay"></output></div><input id="decay" type="range" min="0.3" max="8" step="0.1"><div class="scale"><span>Short</span><span>Long</span></div></div>
+      <div class="control"><div class="control-title"><label for="bass">Bass</label><output id="bass-output" for="bass"></output></div><input id="bass" type="range" min="0" max="18" step="0.5"><div class="scale"><span>Neutral</span><span>Deep</span></div></div>
+    </section>
+    <div class="volume control-title"><label for="volume">Output</label><input id="volume" type="range" min="0" max="1.5" step="0.01"><output id="volume-output" for="volume"></output></div>
+  </fieldset>
+  <section class="presets" aria-label="Presets">
+    <div class="control-title"><h2>Your listening shelf</h2><button id="defaults" class="text-button" disabled>Use as default</button></div>
+    <div id="factory-presets" class="chips"></div>
+    <div class="saved-row"><select id="saved" aria-label="Saved presets"><option value="">Saved presets</option></select><button id="load" disabled>Load</button><button id="delete" disabled>Delete</button></div>
+    <form id="save-form"><input id="preset-name" aria-label="Preset name" placeholder="Name this sound" maxlength="48" required><button id="save" disabled>Save preset</button></form>
+  </section>
+</main>
+<footer>Local audio processing <span>•</span> No account needed</footer>
+<script type="module" src="panel.js"></script>
+</body></html>
